@@ -8,7 +8,8 @@ from analyzer.behavior_engine import BehaviorAnalyzer
 from analyzer.scoring_engine import ScoringEngine
 from analyzer.ioc_extractor import IOCExtractor
 from reporting.report_builder import ReportBuilder
-
+from analyzer.mitre_mapper import MitreMapper
+from reporting.report_builder import ReportBuilder
 
 sample_path = os.path.abspath("../../test.sh")
 
@@ -31,8 +32,21 @@ classification = scorer.classify()
 ioc_extractor = IOCExtractor(analyzer.syscalls)
 iocs = ioc_extractor.extract()
 
+
+
+
+
+mitre = MitreMapper(behavior)
+techniques = mitre.map()
+
 report_builder = ReportBuilder(analysis_id, sample_path)
-report_path = report_builder.build(behavior, score, classification, iocs)
+report_path = report_builder.build(
+    behavior,
+    score,
+    classification,
+    iocs,
+    techniques
+)
 
 print("Score:", score)
 print("Classification:", classification)
