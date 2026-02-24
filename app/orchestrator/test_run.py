@@ -10,6 +10,8 @@ from analyzer.ioc_extractor import IOCExtractor
 from reporting.report_builder import ReportBuilder
 from analyzer.mitre_mapper import MitreMapper
 from reporting.report_builder import ReportBuilder
+from monitoring.process_parser import ProcessTreeBuilder
+
 
 sample_path = os.path.abspath("../../test.sh")
 
@@ -20,7 +22,11 @@ analysis_id = result["analysis_id"]
 artifact_dir = result["artifact_dir"]
 
 print("Analysis ID:", analysis_id)
+tree_builder = ProcessTreeBuilder(artifact_dir)
+process_data = tree_builder.build()
 
+print("Process Tree:", process_data["process_tree"])
+print("Execution Map:", process_data["execution_map"])
 analyzer = BehaviorAnalyzer(artifact_dir)
 analyzer.load_strace_logs()
 behavior = analyzer.analyze()

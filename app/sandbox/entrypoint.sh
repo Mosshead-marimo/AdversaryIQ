@@ -17,9 +17,9 @@ echo "[*] Sample type: $FILE_TYPE"
 echo "[*] Starting strace monitoring..."
 
 if [[ $FILE_TYPE == *"ELF"* ]]; then
-    strace -ff -o $LOG_DIR/strace.log $SAMPLE_PATH &
+    strace -ff -tt -o $LOG_DIR/strace.log $SAMPLE_PATH &
 elif [[ $FILE_TYPE == *"shell script"* ]]; then
-    strace -ff -o $LOG_DIR/strace.log bash $SAMPLE_PATH &
+    strace -ff -tt -o $LOG_DIR/strace.log bash $SAMPLE_PATH &
 else
     echo "[!] Unsupported file type for execution."
     exit 1
