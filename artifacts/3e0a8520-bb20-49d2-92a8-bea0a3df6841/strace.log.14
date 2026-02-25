@@ -1,0 +1,2 @@
+09:32:39.425081 execve("/analysis/sample", ["/analysis/sample"], 0x7ffd66fafea0 /* 7 vars */) = -1 ENOEXEC (Exec format error)
+09:32:39.434056 +++ exited with 1 +++

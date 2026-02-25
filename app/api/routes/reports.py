@@ -4,7 +4,7 @@ from fastapi import APIRouter, HTTPException
 
 router = APIRouter()
 
-REPORT_DIR = os.path.abspath("reports")
+REPORT_DIR = os.path.abspath("../../reports")
 
 
 @router.get("/reports/{analysis_id}")

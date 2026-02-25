@@ -10,3 +10,10 @@ test_*.py
 *.tmp
 *.temp
 # Ignore virtual environment                
+
+# Generated analysis data
+samples/
+logs/
+reports/
+app/api/samples/
+app/api/reports/
