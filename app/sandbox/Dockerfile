@@ -2,36 +2,43 @@ FROM ubuntu:22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
+# -----------------------------
 # Create non-root user
+# -----------------------------
 RUN useradd -m analyst
 
-# Install required tools (including libcap2-bin for setcap)
+# -----------------------------
+# Install required tools
+# -----------------------------
 RUN apt update && apt install -y \
     python3 \
-    python3-pip \
     strace \
     tcpdump \
     procps \
     net-tools \
     iproute2 \
-    inotify-tools \
     file \
     curl \
     ca-certificates \
     libcap2-bin \
     && rm -rf /var/lib/apt/lists/*
 
+# -----------------------------
+# Setup working directory
+# -----------------------------
 WORKDIR /analysis
 
+# Copy sandbox agent + entrypoint
 COPY monitor_agent.py /analysis/monitor_agent.py
 COPY entrypoint.sh /analysis/entrypoint.sh
 
 RUN chmod +x /analysis/entrypoint.sh
 
-# Correct dynamic capability assignment
-RUN setcap cap_net_raw,cap_net_admin=eip $(which tcpdump)
+# Allow tcpdump without full root
+RUN setcap cap_net_raw,cap_net_admin=eip /usr/sbin/tcpdump || true
 
 RUN chown -R analyst:analyst /analysis
 
 USER analyst
+
 ENTRYPOINT ["/analysis/entrypoint.sh"]
