@@ -42,14 +42,7 @@ class ReportBuilder:
 
         return technique_summary
 
-    def build(
-        self,
-        behavior: dict,
-        score: int,
-        classification: str,
-        iocs: dict,
-        techniques: list
-    ):
+    def build(self, behavior, score, classification, iocs, techniques, timeline, process_data, flags):
         sha256_hash = self._compute_hash()
 
         tactic_summary = self._aggregate_tactics(techniques)
@@ -78,7 +71,13 @@ class ReportBuilder:
                 "technique_summary": technique_summary,
                 "tactic_distribution": tactic_summary
             },
-            "indicators_of_compromise": iocs
+            "indicators_of_compromise": iocs,
+            "advanced_behavior_analysis": {
+    "process_tree": process_data["process_tree"],
+    "execution_map": process_data["execution_map"],
+    "execution_timeline": timeline,
+    "heuristic_flags": flags
+}
         }
 
         report_path = os.path.join(self.report_dir, f"{self.analysis_id}.json")
