@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PyDetonator Report</title>
+    <style>
+        body { font-family: Arial; margin: 40px; }
+        h1 { color: #c0392b; }
+        .section { margin-bottom: 20px; }
+        .flag { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<h1>PyDetonator Analysis Report</h1>
+
+<div class="section">
+    <h2>Analysis Metadata</h2>
+    <pre>{{analysis_metadata}}</pre>
+</div>
+
+<div class="section">
+    <h2>Risk Assessment</h2>
+    <pre>{{risk_assessment}}</pre>
+</div>
+
+<div class="section">
+    <h2>MITRE ATT&CK Mapping</h2>
+    <pre>{{mitre_attack_analysis}}</pre>
+</div>
+
+<div class="section">
+    <h2>Heuristic Flags</h2>
+    <pre>{{heuristic_flags}}</pre>
+</div>
+
+</body>
+</html>

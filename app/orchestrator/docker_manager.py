@@ -1,12 +1,14 @@
 import os
-import uuid
 import time
 import docker
-from core.config import ARTIFACTS_DIR, DOCKER_IMAGE
+import sys
+sys.path.append(os.path.abspath("../"))
+from core.config import DOCKER_IMAGE
+from core.constants import DEFAULT_TIMEOUT_SECONDS, DEFAULT_MEMORY_LIMIT, DEFAULT_PIDS_LIMIT
 
 
 class DockerSandboxManager:
-    def __init__(self, image_name=DOCKER_IMAGE, timeout=30):
+    def __init__(self, image_name=DOCKER_IMAGE, timeout=DEFAULT_TIMEOUT_SECONDS):
         self.client = docker.DockerClient(
             base_url="npipe:////./pipe/docker_engine"
         )
@@ -15,14 +17,7 @@ class DockerSandboxManager:
         self.image_name = image_name
         self.timeout = timeout
 
-    def analyze_sample(self, sample_path: str):
-        if not os.path.isfile(sample_path):
-            raise FileNotFoundError("Sample not found")
-
-        analysis_id = str(uuid.uuid4())
-        artifact_dir = os.path.join(ARTIFACTS_DIR, analysis_id)
-        os.makedirs(artifact_dir, exist_ok=True)
-
+    def execute(self, sample_path: str, artifact_dir: str):
         container = None
 
         try:
@@ -39,8 +34,8 @@ class DockerSandboxManager:
                         "mode": "rw"
                     }
                 },
-                mem_limit="512m",
-                pids_limit=64,
+                mem_limit=DEFAULT_MEMORY_LIMIT,
+                pids_limit=DEFAULT_PIDS_LIMIT,
                 read_only=True,
                 cap_drop=["ALL"],
                 security_opt=["no-new-privileges"]
@@ -63,8 +58,3 @@ class DockerSandboxManager:
         finally:
             if container:
                 container.remove(force=True)
-
-        return {
-            "analysis_id": analysis_id,
-            "artifact_dir": artifact_dir
-        }

@@ -1,38 +1,27 @@
 #!/bin/bash
 
-SAMPLE_PATH="/analysis/sample"
 LOG_DIR="/analysis/logs"
+SAMPLE="/analysis/sample"
 
 mkdir -p $LOG_DIR
 
-if [ ! -f "$SAMPLE_PATH" ]; then
-    echo "[-] No sample provided at $SAMPLE_PATH"
+echo "[*] Starting sandbox analysis..."
+
+if [ ! -f "$SAMPLE" ]; then
+    echo "Sample not found"
     exit 1
 fi
 
-FILE_TYPE=$(file $SAMPLE_PATH)
+chmod +x "$SAMPLE" 2>/dev/null || true
 
-echo "[*] Sample type: $FILE_TYPE"
+# Start network capture (background)
+tcpdump -i any -w $LOG_DIR/network.pcap > /dev/null 2>&1 &
+TCPDUMP_PID=$!
 
-echo "[*] Starting strace monitoring..."
+# Start syscall tracing with timestamps
+strace -ff -tt -o $LOG_DIR/strace.log "$SAMPLE" > $LOG_DIR/stdout.log 2>&1
 
-if [[ $FILE_TYPE == *"ELF"* ]]; then
-    strace -ff -tt -o $LOG_DIR/strace.log $SAMPLE_PATH &
-elif [[ $FILE_TYPE == *"shell script"* ]]; then
-    strace -ff -tt -o $LOG_DIR/strace.log bash $SAMPLE_PATH &
-else
-    echo "[!] Unsupported file type for execution."
-    exit 1
-fi
+# Stop tcpdump
+kill $TCPDUMP_PID 2>/dev/null || true
 
-TRACE_PID=$!
-
-echo "[*] Monitoring for 30 seconds..."
-sleep 30
-
-echo "[*] Stopping monitoring..."
-kill -9 $TRACE_PID 2>/dev/null
-
-echo "[*] Analysis complete."
-
-exit 0
+echo "[*] Sandbox execution complete."
