@@ -1,8 +1,16 @@
+from sys import flags
+
+
 class ScoringEngine:
     def __init__(self, behavior: dict):
         self.behavior = behavior
         self.score = 0
-
+    def add_heuristic_penalty(self, flags):
+        for flag in flags:
+            if flag["severity"] == "High":
+                self.score += 20
+            elif flag["severity"] == "Medium":
+             self.score += 10
     def calculate(self):
         weights = {
             "process_execution": 2,
