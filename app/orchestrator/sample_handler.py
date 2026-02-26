@@ -1,7 +1,9 @@
 import os
 import uuid
 import shutil
-from app.core.config import SAMPLES_DIR, ARTIFACTS_DIR
+import sys
+sys.path.append(os.path.abspath("../"))
+from core.config import SAMPLES_DIR, ARTIFACTS_DIR
 
 
 class SampleHandler:

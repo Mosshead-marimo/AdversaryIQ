@@ -1,6 +1,8 @@
 import os
 import re
-from app.core.constants import IPV4_REGEX, STRACE_LOG_PREFIX
+import sys
+sys.path.append(os.path.abspath("../"))
+from core.constants import IPV4_REGEX, STRACE_LOG_PREFIX
 
 
 class NetworkParser:

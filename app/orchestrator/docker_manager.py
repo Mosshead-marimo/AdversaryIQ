@@ -1,17 +1,17 @@
 import os
 import time
 import docker
-from app.core.config import DOCKER_IMAGE
-from app.core.constants import DEFAULT_TIMEOUT_SECONDS, DEFAULT_MEMORY_LIMIT, DEFAULT_PIDS_LIMIT
+import sys
+sys.path.append(os.path.abspath("../"))
+from core.config import DOCKER_IMAGE
+from core.constants import DEFAULT_TIMEOUT_SECONDS, DEFAULT_MEMORY_LIMIT, DEFAULT_PIDS_LIMIT
 
 
 class DockerSandboxManager:
     def __init__(self, image_name=DOCKER_IMAGE, timeout=DEFAULT_TIMEOUT_SECONDS):
-        docker_host = os.getenv("DOCKER_HOST")
-        if docker_host:
-            self.client = docker.DockerClient(base_url=docker_host)
-        else:
-            self.client = docker.from_env()
+        self.client = docker.DockerClient(
+            base_url="npipe:////./pipe/docker_engine"
+        )
         self.client.ping()
 
         self.image_name = image_name
