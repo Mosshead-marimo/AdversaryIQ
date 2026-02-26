@@ -9,9 +9,11 @@ from core.constants import DEFAULT_TIMEOUT_SECONDS, DEFAULT_MEMORY_LIMIT, DEFAUL
 
 class DockerSandboxManager:
     def __init__(self, image_name=DOCKER_IMAGE, timeout=DEFAULT_TIMEOUT_SECONDS):
-        self.client = docker.DockerClient(
-            base_url="npipe:////./pipe/docker_engine"
-        )
+        docker_host = os.getenv("DOCKER_HOST")
+        if docker_host:
+            self.client = docker.DockerClient(base_url=docker_host)
+        else:
+            self.client = docker.from_env()
         self.client.ping()
 
         self.image_name = image_name
