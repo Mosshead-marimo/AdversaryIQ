@@ -1,8 +1,6 @@
-import sys
-sys.path.append("../")
-from orchestrator.sample_handler import SampleHandler
-from orchestrator.docker_manager import DockerSandboxManager
-from orchestrator.execution_engine import ExecutionEngine
+from app.orchestrator.sample_handler import SampleHandler
+from app.orchestrator.docker_manager import DockerSandboxManager
+from app.orchestrator.execution_engine import ExecutionEngine
 
 
 class AnalysisController:
