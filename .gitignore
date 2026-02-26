@@ -10,6 +10,8 @@ test_*.py
 *.tmp
 *.temp
 # Ignore virtual environment                
+!enterprise-attack.json
+!report_schema.json
 
 # Generated analysis data
 samples/

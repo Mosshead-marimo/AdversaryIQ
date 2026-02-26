@@ -1,0 +1,31 @@
+{
+  "analysis_metadata": {
+    "analysis_id": "string",
+    "timestamp_utc": "string",
+    "engine": "string",
+    "version": "string"
+  },
+  "sample_information": {
+    "original_path": "string",
+    "sha256": "string",
+    "file_size_bytes": "integer"
+  },
+  "risk_assessment": {
+    "risk_score": "integer",
+    "classification": "string"
+  },
+  "behavior_summary": "object",
+  "mitre_attack_analysis": {
+    "mapped_techniques": "array",
+    "technique_count": "integer",
+    "technique_summary": "object",
+    "tactic_distribution": "object"
+  },
+  "advanced_behavior_analysis": {
+    "process_tree": "object",
+    "execution_map": "object",
+    "execution_timeline": "array",
+    "heuristic_flags": "array"
+  },
+  "indicators_of_compromise": "object"
+}
