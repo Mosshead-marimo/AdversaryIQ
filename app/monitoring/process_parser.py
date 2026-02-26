@@ -1,9 +1,7 @@
 import os
 import re
 from collections import defaultdict
-import sys
-sys.path.append(os.path.abspath("../"))
-from core.constants import STRACE_LOG_PREFIX
+from app.core.constants import STRACE_LOG_PREFIX
 
 
 class ProcessTreeBuilder:

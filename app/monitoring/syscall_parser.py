@@ -1,8 +1,6 @@
 import os
 import re
-import sys
-sys.path.append(os.path.abspath("../"))
-from core.constants import STRACE_LOG_PREFIX
+from app.core.constants import STRACE_LOG_PREFIX
 
 
 class SyscallParser:
