@@ -12,10 +12,13 @@ test_*.py
 # Ignore virtual environment                
 !enterprise-attack.json
 !report_schema.json
+!/frontend/*.json
+!/frontend/src/app/reports/
+
 
 # Generated analysis data
 samples/
 logs/
-reports/
+/reports/
 app/api/samples/
 app/api/reports/
