@@ -1,4 +1,4 @@
-from app.core.mitre_attack_loader import MitreAttackDatabase
+from core.mitre_attack_loader import MitreAttackDatabase
 
 
 class MitreMapper:

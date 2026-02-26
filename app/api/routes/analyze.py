@@ -1,12 +1,15 @@
 import os
 import re
 import shutil
+import sys
 import uuid
 from pathlib import Path
 from typing import Optional
 from fastapi import APIRouter, UploadFile, File, HTTPException
 
-from app.orchestrator.controller import AnalysisController
+sys.path.append(os.path.abspath("../"))
+
+from orchestrator.controller import AnalysisController
 
 router = APIRouter()
 
