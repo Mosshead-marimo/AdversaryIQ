@@ -151,22 +151,23 @@ Structured Intelligence Output
 ## ⚙️ Running the System
 
 ### Build Sandbox Image
-
+``` bash
 docker build -t pydetonator-sandbox ./app/sandbox
-
+```
 ### Start API Server
-
+```bash
 uvicorn app.api.main:app --reload
-
+```
 Swagger UI: http://127.0.0.1:8000/docs
 
 ### Start the Frontend
+```bash 
 cd frontend/
 
 npm install
 
 npm run dev
-
+```
 ------------------------------------------------------------------------
 
 ## 🎓 Intended Audience
