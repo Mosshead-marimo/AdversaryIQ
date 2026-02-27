@@ -7,9 +7,9 @@ from pathlib import Path
 from typing import Optional
 from fastapi import APIRouter, UploadFile, File, HTTPException
 
-sys.path.append(os.path.abspath("../"))
+#sys.path.append(os.path.abspath("../"))
 
-from orchestrator.controller import AnalysisController
+from app.orchestrator.controller import AnalysisController
 
 router = APIRouter()
 

@@ -2,9 +2,9 @@ import os
 import time
 import docker
 import sys
-sys.path.append(os.path.abspath("../"))
-from core.config import DOCKER_IMAGE
-from core.constants import DEFAULT_TIMEOUT_SECONDS, DEFAULT_MEMORY_LIMIT, DEFAULT_PIDS_LIMIT
+#sys.path.append(os.path.abspath("../"))
+from app.core.config import DOCKER_IMAGE
+from app.core.constants import DEFAULT_TIMEOUT_SECONDS, DEFAULT_MEMORY_LIMIT, DEFAULT_PIDS_LIMIT
 
 
 class DockerSandboxManager:

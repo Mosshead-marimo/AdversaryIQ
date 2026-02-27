@@ -3,8 +3,8 @@ import os
 import sys
 
 
-sys.path.append(os.path.abspath("../"))
-from core.constants import ATTACK_PATTERN_TYPE, MITRE_ATTACK_SOURCE_NAME
+#sys.path.append(os.path.abspath("../"))
+from app.core.constants import ATTACK_PATTERN_TYPE, MITRE_ATTACK_SOURCE_NAME
 
 class MitreAttackDatabase:
     def __init__(self):

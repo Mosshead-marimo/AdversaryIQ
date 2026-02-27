@@ -1,24 +1,11 @@
-*.json
-.env
-*.log
-*.pyc
 __pycache__/
-# Ignore test files
-test_*.py
-*/test_*.py
-# Ignore temporary files
-*.tmp
-*.temp
-# Ignore virtual environment                
-!enterprise-attack.json
-!report_schema.json
-!/frontend/*.json
-!/frontend/src/app/reports/
-
-
-# Generated analysis data
+*.pyc
+.env
+venv/
+temp_upload/
 samples/
-logs/
-/reports/
-app/api/samples/
-app/api/reports/
+artifacts/
+reports/
+test_run.py
+frontend/node_modules/
+frontend/.next/
