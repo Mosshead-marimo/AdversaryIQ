@@ -1,4 +1,4 @@
-# 🧨 PyDetonator
+# 🧨 AdversaryIQ
 
 ### Dynamic Malware Detonation & Behavioral Threat Intelligence Engine
 
@@ -6,7 +6,7 @@
 
 ## 🚀 Overview
 
-**PyDetonator** is a container-isolated dynamic malware analysis engine
+**AdversaryIQ** is a container-isolated dynamic malware analysis engine
 that transforms raw execution behavior into structured threat
 intelligence.
 
@@ -15,7 +15,7 @@ reconstructs execution flow, maps behavior to the full MITRE ATT&CK
 framework, applies heuristic detection, and produces intelligence-grade
 reports.
 
-PyDetonator is built as a modular, API-first behavioral analysis
+AdversaryIQ is built as a modular, API-first behavioral analysis
 platform designed for research, blue teams, and security automation.
 
 ------------------------------------------------------------------------
@@ -33,7 +33,7 @@ Modern malware evades static detection using:
 
 Signature-based scanning is no longer sufficient.
 
-PyDetonator focuses on **behavior**, not appearance.
+AdversaryIQ focuses on **behavior**, not appearance.
 
 ------------------------------------------------------------------------
 
@@ -181,6 +181,6 @@ npm run dev
 
 ------------------------------------------------------------------------
 
-## 🧨 PyDetonator
+## 🧨 AdversaryIQ
 
 Behavior-first. Intelligence-driven. Modular by design.
