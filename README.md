@@ -160,6 +160,11 @@ uvicorn app.api.main:app --reload
 
 Swagger UI: http://127.0.0.1:8000/docs
 
+### Start the Frontend
+cd frontend/
+npm install
+npm run dev
+
 ------------------------------------------------------------------------
 
 ## 🎓 Intended Audience
