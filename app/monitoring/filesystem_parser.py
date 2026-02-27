@@ -1,8 +1,8 @@
 import os
 import re
 import sys
-sys.path.append(os.path.abspath("../"))
-from core.constants import FILE_PATH_REGEX, STRACE_LOG_PREFIX
+#sys.path.append(os.path.abspath("../"))
+from app.core.constants import FILE_PATH_REGEX, STRACE_LOG_PREFIX
 
 
 class FileSystemParser:

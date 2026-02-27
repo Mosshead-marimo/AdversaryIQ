@@ -1,16 +1,16 @@
 import sys
-sys.path.append("../")
+#sys.path.append("../")
 
-from monitoring.process_parser import ProcessTreeBuilder
-from monitoring.timeline_builder import ExecutionTimelineBuilder
-from monitoring.network_parser import NetworkParser
-from monitoring.filesystem_parser import FileSystemParser
-from analyzer.behavior_engine import BehaviorAnalyzer
-from analyzer.ioc_extractor import IOCExtractor
-from analyzer.mitre_mapper import MitreMapper
-from analyzer.heuristics_engine import HeuristicsEngine
-from analyzer.scoring_engine import ScoringEngine
-from reporting.report_builder import ReportBuilder
+from app.monitoring.process_parser import ProcessTreeBuilder
+from app.monitoring.timeline_builder import ExecutionTimelineBuilder
+from app.monitoring.network_parser import NetworkParser
+from app.monitoring.filesystem_parser import FileSystemParser
+from app.analyzer.behavior_engine import BehaviorAnalyzer
+from app.analyzer.ioc_extractor import IOCExtractor
+from app.analyzer.mitre_mapper import MitreMapper
+from app.analyzer.heuristics_engine import HeuristicsEngine
+from app.analyzer.scoring_engine import ScoringEngine
+from app.reporting.report_builder import ReportBuilder
 
 
 class ExecutionEngine:

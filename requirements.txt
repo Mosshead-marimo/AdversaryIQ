@@ -1,4 +1,4 @@
-docker
 fastapi
 uvicorn
+docker
 python-multipart

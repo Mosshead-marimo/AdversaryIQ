@@ -3,9 +3,9 @@ import json
 import hashlib
 from datetime import datetime
 import sys
-sys.path.append(os.path.abspath("../"))
-from core.config import REPORTS_DIR
-from core.constants import REPORT_FILE_EXTENSION
+#sys.path.append(os.path.abspath("../"))
+from app.core.config import REPORTS_DIR
+from app.core.constants import REPORT_FILE_EXTENSION
 
 
 class ReportBuilder:

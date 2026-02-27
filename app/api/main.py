@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routes import analyze, reports, health
+from app.api.routes import analyze, reports, health
 import os
 
 app = FastAPI(title="PyDetonator API")
